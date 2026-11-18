@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Board</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>📋 Task Board</h1>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search tasks...">
+      <button id="add-btn" class="primary">+ New task</button>
+    </div>
+  </header>
+
+  <div id="message" class="message" hidden></div>
+
+  <section class="stats">
+    <div class="stat"><span id="stat-total">0</span><small>Total</small></div>
+    <div class="stat"><span id="stat-doing">0</span><small>In progress</small></div>
+    <div class="stat"><span id="stat-done">0</span><small>Done</small></div>
+    <div class="stat"><span id="stat-overdue">0</span><small>Overdue</small></div>
+    <div class="stat"><span id="stat-completion">0%</span><small>Completed</small></div>
+  </section>
+
+  <main class="board">
+    <section class="column">
+      <h2>To do <span class="count" id="count-todo">0</span></h2>
+      <div id="col-todo" class="cards"></div>
+    </section>
+    <section class="column">
+      <h2>In progress <span class="count" id="count-doing">0</span></h2>
+      <div id="col-doing" class="cards"></div>
+    </section>
+    <section class="column">
+      <h2>Done <span class="count" id="count-done">0</span></h2>
+      <div id="col-done" class="cards"></div>
+    </section>
+  </main>
+
+  <dialog id="dialog">
+    <form id="form">
+      <h2 id="form-title">New task</h2>
+      <input type="hidden" name="task_id">
+
+      <label>Title
+        <input name="title" maxlength="100" required>
+      </label>
+      <label>Description
+        <textarea name="description" maxlength="500" rows="3"></textarea>
+      </label>
+      <div class="row">
+        <label>Status
+          <select name="status">
+            <option value="todo">To do</option>
+            <option value="doing">In progress</option>
+            <option value="done">Done</option>
+          </select>
+        </label>
+        <label>Priority
+          <select name="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label>Due date
+          <input type="date" name="due_date">
+        </label>
+      </div>
+
+      <p id="form-error" class="form-error"></p>
+      <div class="form-actions">
+        <button type="button" id="cancel-btn">Cancel</button>
+        <button type="submit" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
